@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent Security — HOL Guard</title>
+  <meta name="description" content="HOL Guard is an open-source AI agent security scanner. Protect Claude Code, Codex, Cursor, and Gemini from malicious plugins, secrets, and supply chain attacks.">
+  <meta name="keywords" content="AI agent security, Claude Code security, Codex security, AI plugin scanner, MCP server security, AI coding agent antivirus">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --fg: #e0e0e0;
+      --accent: #00e5c9;
+      --accent2: #ff6b35;
+      --muted: #888;
+      --card: #111118;
+      --border: #1a1a2e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.3rem; margin: 2rem 0 0.8rem; color: var(--accent); }
+    h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: var(--accent2); }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+    .cta:hover { text-decoration: none; opacity: 0.9; }
+    .cta.secondary { background: var(--card); color: var(--accent); border: 1px solid var(--accent); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin: 1rem 0;
+    }
+    .card h3 { margin-top: 0; }
+    code, pre {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 0.85rem;
+    }
+    pre {
+      background: #000;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      margin: 0.8rem 0;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin: 0.2rem;
+    }
+    .check { color: var(--accent); }
+    .warn { color: var(--accent2); }
+    ul { margin-left: 1.5rem; }
+    li { margin: 0.3rem 0; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th, td { padding: 0.5rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--accent); }
+    .ecosystem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+    .ecosystem-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.8rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .ecosystem-item strong { display: block; margin-bottom: 0.3rem; color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 HOL Guard</h1>
+  <p class="tagline">The open-source security scanner for AI coding agents and plugins.</p>
+
+  <p>
+    <a href="https://github.com/hashgraph-online/hol-guard" class="cta">GitHub</a>
+    <a href="https://hol.org/guard" class="cta secondary">Website</a>
+    <a href="https://pypi.org/project/plugin-scanner/" class="cta secondary">PyPI</a>
+  </p>
+
+  <h2>What is HOL Guard?</h2>
+  <p>
+    HOL Guard is an open-source (Apache 2.0) security scanner that protects AI coding agents 
+    from malicious plugins, hardcoded secrets, and supply-chain risks. It works with 
+    <strong>Claude Code, OpenAI Codex, Cursor, Gemini, OpenCode</strong>, and any tool that uses 
+    <a href="https://modelcontextprotocol.io/">MCP servers</a> or plugins.
+  </p>
+
+  <div class="ecosystem-grid">
+    <div class="ecosystem-item">
+      <strong>Claude Code</strong>
+      <span class="check">✓ Protected</span>
+    </div>
+    <div class="ecosystem-item">
+      <strong>OpenAI Codex</strong>
+      <span class="check">✓ Protected</span>
+    </div>
+    <div class="ecosystem-item">
+      <strong>Cursor</strong>
+      <span class="check">✓ Protected</span>
+    </div>
+    <div class="ecosystem-item">
+      <strong>Gemini</strong>
+      <span class="check">✓ Protected</span>
+    </div>
+    <div class="ecosystem-item">
+      <strong>OpenCode</strong>
+      <span class="check">✓ Protected</span>
+    </div>
+    <div class="ecosystem-item">
+      <strong>MCP Servers</strong>
+      <span class="check">✓ Protected</span>
+    </div>
+  </div>
+
+  <h2>Install in 30 Seconds</h2>
+  <pre>pipx install plugin-scanner</pre>
+  <p>Or with pip:</p>
+  <pre>pip install plugin-scanner</pre>
+
+  <h2>Quick Start</h2>
+  <h3>Scan your plugin</h3>
+  <pre>plugin-scanner scan . --format text</pre>
+
+  <h3>Quick lint</h3>
+  <pre>plugin-scanner lint . --format text</pre>
+
+  <h3>Verify marketplace readiness</h3>
+  <pre>plugin-scanner verify . --format text</pre>
+
+  <h3>JSON output for CI</h3>
+  <pre>plugin-scanner scan . --format json --output report.json</pre>
+
+  <h3>SARIF for GitHub Advanced Security</h3>
+  <pre>plugin-scanner scan . --format sarif --output results.sarif</pre>
+
+  <h2>What the Scanner Checks</h2>
+  <p>HOL Guard scores plugins on a 130-point scale across 7 categories:</p>
+
+  <table>
+    <tr><th>Category</th><th>Max</th><th>What It Checks</th></tr>
+    <tr><td>Manifest Validation</td><td>31</td><td>plugin.json valid, required fields, semver, kebab-case</td></tr>
+    <tr><td>Security</td><td>36</td><td>SECURITY.md, LICENSE, no secrets, hardened MCP remotes</td></tr>
+    <tr><td>Operational Security</td><td>20</td><td>Pinned Actions, no write-all, Dependabot, lockfiles</td></tr>
+    <tr><td>Best Practices</td><td>15</td><td>README.md, skills directory, SKILL.md frontmatter, .codexignore</td></tr>
+    <tr><td>Marketplace</td><td>15</td><td>marketplace.json valid, safe source paths</td></tr>
+    <tr><td>Skill Security</td><td>15</td><td>Cisco scan clean, no elevated findings, analyzable</td></tr>
+    <tr><td>Code Quality</td><td>10</td><td>No eval/new Function, no shell injection</td></tr>
+  </table>
+
+  <p><strong>Passing threshold:</strong> 80+ points with no critical or high severity findings.</p>
+
+  <h2>Protection Levels</h2>
+  <p>HOL Guard offers 4 preset protection levels for different risk appetites:</p>
+
+  <div class="card">
+    <h3><span class="check">🌿 Gentle</span></h3>
+    <p>Minimal friction. Checks for obvious issues only. Best for rapid development.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="check">⚖️ Balanced</span></h3>
+    <p>Standard security checks. Recommended for most projects. The default.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="warn">🔒 Strict</span></h3>
+    <p>Comprehensive scanning. No high-severity findings allowed. Best for shared/public plugins.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="warn">🛡️ Paranoid</span></h3>
+    <p>Maximum security. Every finding is a blocker. Best for financial, medical, or enterprise use.</p>
+  </div>
+
+  <h2>CI Integration</h2>
+  <p>Add a security gate to every PR with the official GitHub Action:</p>
+
+  <pre><code>name: HOL Plugin Scanner
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: HOL Plugin Scanner
+        uses: hashgraph-online/ai-plugin-scanner-action@v1
+        with:
+          plugin_dir: "."
+          mode: scan
+          min_score: 80
+          fail_on_severity: high
+          format: sarif
+          upload_sarif: true</code></pre>
+
+  <h2>Why This Matters</h2>
+  <p>
+    AI coding agents run with full shell access. A malicious plugin can read your environment, 
+    exfiltrate code, or execute arbitrary commands. HOL Guard is the first line of defense 
+    — catching issues before they reach your agent.
+  </p>
+
+  <p>
+    <strong>Real threats the scanner catches:</strong>
+  </p>
+  <ul>
+    <li>Hardcoded API keys and tokens in plugin files</li>
+    <li>Dangerous MCP commands (rm -rf, sudo, curl | sh)</li>
+    <li>Unpinned GitHub Actions (supply chain risk)</li>
+    <li>Missing security policies or licenses</li>
+    <li>Eval() and shell injection in skill code</li>
+    <li>Insecure MCP server configurations</li>
+  </ul>
+
+  <h2>Cisco AI Defense Integration</h2>
+  <p>
+    HOL Guard integrates with <strong>Cisco AI Defense</strong> for enterprise-grade scanning. 
+    The Cisco skill scanner and MCP scanner run as additional layers, catching threats that 
+    static analysis alone misses.
+  </p>
+
+  <h2>Trust Registry</h2>
+  <p>
+    Verified plugins are listed on the <a href="https://hol.org/registry/plugins">HOL Plugin Registry</a> 
+    with a trust score. Users can browse and install plugins with confidence.
+  </p>
+
+  <h2>Resources</h2>
+  <ul>
+    <li><a href="https://github.com/hashgraph-online/hol-guard">HOL Guard</a> — Main repo</li>
+    <li><a href="https://github.com/hashgraph-online/ai-plugin-scanner-action">GitHub Action</a> — CI integration</li>
+    <li><a href="https://github.com/hashgraph-online/awesome-codex-plugins">Awesome Codex Plugins</a> — Curated plugin list with scanner requirements</li>
+    <li><a href="https://pypi.org/project/plugin-scanner/">plugin-scanner on PyPI</a></li>
+    <li><a href="https://hol.org/guard">hol.org/guard</a> — Official website</li>
+  </ul>
+
+  <div class="footer">
+    <p>
+      HOL Guard is open source under the Apache 2.0 license. 
+      Built by <a href="https://github.com/hashgraph-online">Hashgraph Online</a>.
+    </p>
+    <p>
+      This is an independent informational site. For official docs, visit <a href="https://hol.org/guard">hol.org/guard</a>.
+    </p>
+  </div>
+
+</body>
+</html>
