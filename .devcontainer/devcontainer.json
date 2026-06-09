@@ -1,0 +1,17 @@
+{
+  "name": "HOL Guard Examples",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "postCreateCommand": "pip install plugin-scanner",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "github.vscode-github-actions"
+      ]
+    }
+  }
+}
+

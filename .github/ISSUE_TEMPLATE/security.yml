@@ -1,0 +1,12 @@
+name: Security Report
+description: Report a security issue with the examples or docs
+title: "[security] "
+labels: [security]
+body:
+  - type: textarea
+    attributes:
+      label: What is the security concern?
+      description: Describe the issue. Do not include sensitive details.
+    validations:
+      required: true
+
