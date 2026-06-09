@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code Security — Protect Your AI Coding Agent</title>
+  <meta name="description" content="How to secure Claude Code from malicious plugins, supply chain attacks, and hardcoded secrets. HOL Guard scanner integration for Anthropic's Claude Code.">
+  <style>
+    :root { --bg: #ffffff; --fg: #1a1a2e; --muted: #6b7280; --accent: #00a67e; --accent2: #c2410c; --card: #f9fafb; --border: #e5e7eb; --code-bg: #f3f4f6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 0.8rem; color: var(--fg); }
+    p { margin: 0.8rem 0; }
+    ul { margin-left: 1.5rem; }
+    li { margin: 0.4rem 0; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); font-family: monospace; font-size: 0.9rem; }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<h1>Claude Code Security</h1>
+<p class="tagline">Protect Anthropic's Claude Code from malicious plugins and supply chain attacks.</p>
+
+<p>Claude Code runs with full shell access to your codebase, environment variables, and system commands. A single malicious plugin can exfiltrate secrets, modify code, or execute arbitrary commands.</p>
+
+<h2>Why Claude Code Needs Security Scanning</h2>
+
+<p>Claude Code supports <a href="https://modelcontextprotocol.io/">MCP servers</a> and custom plugins that extend its capabilities. These plugins run in the same process as your AI agent with access to:</p>
+
+<ul>
+  <li>Your entire codebase</li>
+  <li>Environment variables and <code>.env</code> files</li>
+  <li>Shell execution privileges</li>
+  <li>Network access</li>
+</ul>
+
+<p>A compromised plugin can read API keys, inject backdoors, or exfiltrate proprietary code to remote servers.</p>
+
+<h2>How HOL Guard Protects Claude Code</h2>
+
+<div class="card">
+  <h2>🔍 Plugin Scanning</h2>
+  <p>Scan every MCP server and plugin before installation. Checks for hardcoded secrets, dangerous commands (rm, sudo, eval), and insecure configurations.</p>
+  <pre>plugin-scanner scan /path/to/plugin --format text</pre>
+</div>
+
+<div class="card">
+  <h2>🛡️ Runtime Protection</h2>
+  <p>4 protection levels from Gentle (minimal friction) to Paranoid (every operation verified). Intercepts malicious actions in real-time.</p>
+</div>
+
+<div class="card">
+  <h2>⚡ CI Integration</h2>
+  <p>GitHub Action that runs on every PR. Fails the build if score < 80 or any high/critical findings.</p>
+  <pre>uses: hashgraph-online/ai-plugin-scanner-action@v1</pre>
+</div>
+
+<h2>Getting Started</h2>
+
+<ol>
+  <li>Install the scanner: <code>pipx install plugin-scanner</code></li>
+  <li>Scan your current Claude Code plugins: <code>plugin-scanner scan ~/.claude/plugins --format text</code></li>
+  <li>Add CI to your custom plugins</li>
+  <li>Set protection level in HOL Guard</li>
+</ol>
+
+<h2>Resources</h2>
+<ul>
+  <li><a href="https://github.com/hashgraph-online/hol-guard">HOL Guard</a> — Main repository</li>
+  <li><a href="https://hol.org/guard">hol.org/guard</a> — Official documentation</li>
+  <li><a href="https://pypi.org/project/plugin-scanner/">plugin-scanner</a> — PyPI package</li>
+  <li><a href="https://github.com/hashgraph-online/awesome-codex-plugins">Awesome Codex Plugins</a> — Curated list with mandatory scanning</li>
+</ul>
+
+<div class="footer">
+  <p>HOL Guard is open source under Apache 2.0. Built by <a href="https://hashgraph.online">Hashgraph Online</a>.</p>
+  <p><a href="https://zerocodefast.github.io/hol-guard-examples/">← Back to HOL Guard Examples</a></p>
+</div>
+
+</body>
+</html>
