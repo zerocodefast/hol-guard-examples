@@ -14,6 +14,10 @@ Security guides and examples for [HOL Guard](https://github.com/hashgraph-online
 - [Cursor IDE Security](https://zerocodefast.github.io/hol-guard-examples/cursor-security.html) — securing Cursor extensions
 - [MCP Server Security](https://zerocodefast.github.io/hol-guard-examples/mcp-server-security.html) — securing Model Context Protocol servers
 - [Scanner Reference](https://zerocodefast.github.io/hol-guard-examples/scanner-reference.html) — 7-category scoring breakdown
+- [How to Scan](https://zerocodefast.github.io/hol-guard-examples/how-to-scan.html) — step-by-step tutorial
+- [Security Checklist](https://zerocodefast.github.io/hol-guard-examples/security-checklist.html) — before you install anything
+- [Scanner Comparison](https://zerocodefast.github.io/hol-guard-examples/comparison.html) — HOL Guard vs others
+- [FAQ](https://zerocodefast.github.io/hol-guard-examples/faq.html) — common questions answered
 
 ## Quick Start
 
