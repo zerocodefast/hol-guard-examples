@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Scan AI Plugins — Step-by-Step Guide</title>
+  <meta name="description" content="Step-by-step guide to scanning AI agent plugins with HOL Guard. Install, scan, and secure your plugins in 5 minutes.">
+  <meta property="og:title" content="How to Scan AI Plugins — Step-by-Step Guide">
+  <meta property="og:description" content="Step-by-step guide to scanning AI agent plugins with HOL Guard.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerocodefast.github.io/hol-guard-examples/how-to-scan.html">
+  <link rel="canonical" href="https://zerocodefast.github.io/hol-guard-examples/how-to-scan.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "headline": "How to Scan AI Plugins with HOL Guard",
+    "description": "Step-by-step guide to scanning AI agent plugins",
+    "author": {"@type": "Organization", "name": "Hashgraph Online"},
+    "publisher": {"@type": "Organization", "name": "HOL Guard"}
+  }
+  </script>
+  <style>
+    :root { --bg: #ffffff; --fg: #1a1a2e; --muted: #6b7280; --accent: #00a67e; --accent2: #c2410c; --card: #f9fafb; --border: #e5e7eb; --code-bg: #f3f4f6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 0.8rem; color: var(--fg); }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; color: var(--accent); }
+    p { margin: 0.8rem 0; }
+    ul { margin-left: 1.5rem; }
+    li { margin: 0.4rem 0; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); font-family: monospace; font-size: 0.9rem; }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    .nav { margin-bottom: 1rem; font-size: 0.9rem; }
+    .step { border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; }
+    .step h3 { color: var(--accent); margin-top: 0; }
+  </style>
+</head>
+<body>
+
+<p class="nav"><a href="index.html">← HOL Guard Examples</a> | <a href="scanner-reference.html">Scanner Reference</a> | <a href="security-checklist.html">Security Checklist</a></p>
+
+<h1>How to Scan AI Plugins</h1>
+<p class="tagline">From zero to secure in 5 minutes. Step-by-step guide.</p>
+
+<div class="step">
+  <h3>Step 1: Install the Scanner</h3>
+  <p>Install via pipx (recommended) or pip:</p>
+  <pre>pipx install plugin-scanner
+
+# Or with pip
+pip install plugin-scanner</pre>
+</div>
+
+<div class="step">
+  <h3>Step 2: Run Your First Scan</h3>
+  <p>Point the scanner at any plugin directory:</p>
+  <pre>plugin-scanner scan /path/to/your-plugin --format text</pre>
+  <p>Example output:</p>
+  <pre>Scanning: /path/to/your-plugin
+Manifest: 27/31 points
+Security: 32/36 points
+Operational: 18/20 points
+Best Practices: 14/15 points
+Marketplace: 12/15 points
+Skill Security: 15/15 points
+Code Quality: 10/10 points
+
+Total: 118/130 points
+Passed: Yes (score ≥ 80, no critical/high findings)</pre>
+</div>
+
+<div class="step">
+  <h3>Step 3: Fix Findings</h3>
+  <p>If the scan fails, address the findings:</p>
+  <ul>
+    <li><strong>Missing SECURITY.md?</strong> Add one from the template.</li>
+    <li><strong>Hardcoded secrets?</strong> Move them to environment variables.</li>
+    <li><strong>Dangerous commands?</strong> Refactor to remove eval(), shell exec, etc.</li>
+    <li><strong>Unpinned Actions?</strong> Update to commit SHA references.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3>Step 4: Add CI (Optional)</h3>
+  <p>Automate scanning on every PR with the GitHub Action:</p>
+  <pre>uses: hashgraph-online/ai-plugin-scanner-action@v1</pre>
+  <p>This fails the build if score drops below 80 or critical/high findings appear.</p>
+</div>
+
+<div class="step">
+  <h3>Step 5: Choose Protection Level</h3>
+  <p>HOL Guard Agent Shield runs at 4 levels:</p>
+  <ul>
+    <li><strong>Gentle:</strong> Minimal checks — rapid development</li>
+    <li><strong>Balanced:</strong> Standard checks — recommended for most users</li>
+    <li><strong>Strict:</strong> No high-severity findings allowed — public/shared plugins</li>
+    <li><strong>Paranoid:</strong> Every finding is a blocker — enterprise/sensitive code</li>
+  </ul>
+</div>
+
+<h2>Next Steps</h2>
+<ul>
+  <li><a href="scanner-reference.html">Understand the scoring system</a></li>
+  <li><a href="security-checklist.html">Use the security checklist</a></li>
+  <li><a href="https://github.com/zerocodefast/hol-guard-template">Start with the template repo</a></li>
+</ul>
+
+<div class="footer">
+  <p>HOL Guard is open source under Apache 2.0. <a href="index.html">← Back to HOL Guard Examples</a></p>
+</div>
+
+</body>
+</html>

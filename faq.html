@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOL Guard FAQ — AI Agent Security Questions Answered</title>
+  <meta name="description" content="Frequently asked questions about HOL Guard, AI agent security, plugin scanning, and the HOL Plugin Scanner.">
+  <meta property="og:title" content="HOL Guard FAQ — AI Agent Security Questions Answered">
+  <meta property="og:description" content="Frequently asked questions about HOL Guard and AI agent security.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerocodefast.github.io/hol-guard-examples/faq.html">
+  <link rel="canonical" href="https://zerocodefast.github.io/hol-guard-examples/faq.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "headline": "HOL Guard FAQ",
+    "description": "Frequently asked questions about HOL Guard",
+    "author": {"@type": "Organization", "name": "Hashgraph Online"},
+    "publisher": {"@type": "Organization", "name": "HOL Guard"}
+  }
+  </script>
+  <style>
+    :root { --bg: #ffffff; --fg: #1a1a2e; --muted: #6b7280; --accent: #00a67e; --accent2: #c2410c; --card: #f9fafb; --border: #e5e7eb; --code-bg: #f3f4f6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 0.8rem; color: var(--fg); }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; color: var(--accent); }
+    p { margin: 0.8rem 0; }
+    ul { margin-left: 1.5rem; }
+    li { margin: 0.4rem 0; }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    .nav { margin-bottom: 1rem; font-size: 0.9rem; }
+    .faq { margin: 1.5rem 0; }
+    .faq h3 { color: var(--fg); cursor: pointer; }
+    .faq p { color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<p class="nav"><a href="index.html">← HOL Guard Examples</a> | <a href="how-to-scan.html">How to Scan</a> | <a href="scanner-reference.html">Scanner Reference</a></p>
+
+<h1>HOL Guard FAQ</h1>
+<p class="tagline">Frequently asked questions about AI agent security and HOL Guard.</p>
+
+<div class="faq">
+  <h3>What is HOL Guard?</h3>
+  <p>HOL Guard is an open-source security scanner for AI coding agents (Claude Code, OpenAI Codex, Cursor, etc.). It checks plugins, skills, and MCP servers for vulnerabilities before they get installed or published.</p>
+</div>
+
+<div class="faq">
+  <h3>What does HOL Guard scan for?</h3>
+  <p>7 categories of checks: manifest validation, security (secrets, policies), operational security (CI/CD), best practices, marketplace compliance, skill security, and code quality. Total of 130 points. You need 80+ to pass.</p>
+</div>
+
+<div class="faq">
+  <h3>Does HOL Guard run on my code or just the plugin?</h3>
+  <p>It scans the plugin or skill directory you point it at. It does not modify your code or send it anywhere. Everything runs locally.</p>
+</div>
+
+<div class="faq">
+  <h3>Is HOL Guard free?</h3>
+  <p>Yes. HOL Guard is open source under Apache 2.0. The scanner (plugin-scanner) is available on PyPI. The GitHub Action is free to use.</p>
+</div>
+
+<div class="faq">
+  <h3>What is the HOL Plugin Scanner?</h3>
+  <p>The HOL Plugin Scanner is the CLI tool that runs the actual security checks. Install it via <code>pipx install plugin-scanner</code> or <code>pip install plugin-scanner</code>. It's the core engine behind HOL Guard.</p>
+</div>
+
+<div class="faq">
+  <h3>What AI agents does HOL Guard support?</h3>
+  <p>Any agent that uses plugins with a <code>plugin.json</code> manifest or MCP servers. Specifically tested with Claude Code, OpenAI Codex, Cursor, and Gemini. The scanner checks the plugin structure, not the agent itself.</p>
+</div>
+
+<div class="faq">
+  <h3>What is a passing score?</h3>
+  <p>80+ out of 130 points, with no critical or high severity findings. The score is broken into 7 categories, so a plugin can be strong in some areas and weak in others.</p>
+</div>
+
+<div class="faq">
+  <h3>What are the protection levels?</h3>
+  <p>HOL Guard Agent Shield has 4 levels: Gentle (minimal checks), Balanced (standard, recommended), Strict (no high findings allowed), and Paranoid (every finding is a blocker). You can set the level per project.</p>
+</div>
+
+<div class="faq">
+  <h3>Can I use HOL Guard in CI/CD?</h3>
+  <p>Yes. The official GitHub Action (<code>hashgraph-online/ai-plugin-scanner-action@v1</code>) runs on every PR and fails the build if the score is below 80 or critical/high findings are present. You can also run it in any CI system that supports Python.</p>
+</div>
+
+<div class="faq">
+  <h3>Who built HOL Guard?</h3>
+  <p>HOL Guard is built by <a href="https://hol.org/">Hashgraph Online</a>, a team focused on open-source AI infrastructure and security. The project is community-driven and accepts contributions.</p>
+</div>
+
+<div class="faq">
+  <h3>Where can I get help?</h3>
+  <p>- GitHub Issues: <a href="https://github.com/hashgraph-online/hol-guard/issues">hashgraph-online/hol-guard/issues</a><br>
+  - Documentation: <a href="https://hol.org/guard">hol.org/guard</a><br>
+  - Examples: <a href="index.html">HOL Guard Examples</a></p>
+</div>
+
+<h2>More Resources</h2>
+<ul>
+  <li><a href="how-to-scan.html">How to Scan — step-by-step guide</a></li>
+  <li><a href="scanner-reference.html">Scanner Reference — 7-category scoring</a></li>
+  <li><a href="security-checklist.html">Security Checklist</a></li>
+  <li><a href="comparison.html">Scanner Comparison</a></li>
+</ul>
+
+<div class="footer">
+  <p>HOL Guard is open source under Apache 2.0. <a href="index.html">← Back to HOL Guard Examples</a></p>
+</div>
+
+</body>
+</html>

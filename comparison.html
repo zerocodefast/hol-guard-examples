@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent Security Scanners Compared — HOL Guard vs Others</title>
+  <meta name="description" content="Compare HOL Guard, OpenSSF Scorecard, Semgrep, and other AI agent security scanners. Find the right tool for your plugin security needs.">
+  <meta property="og:title" content="AI Agent Security Scanners Compared — HOL Guard vs Others">
+  <meta property="og:description" content="Compare HOL Guard, OpenSSF Scorecard, Semgrep, and other AI agent security scanners.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerocodefast.github.io/hol-guard-examples/comparison.html">
+  <link rel="canonical" href="https://zerocodefast.github.io/hol-guard-examples/comparison.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ComparisonTable",
+    "headline": "AI Agent Security Scanners Compared",
+    "description": "Comparison of HOL Guard vs other security scanners",
+    "author": {"@type": "Organization", "name": "Hashgraph Online"},
+    "publisher": {"@type": "Organization", "name": "HOL Guard"}
+  }
+  </script>
+  <style>
+    :root { --bg: #ffffff; --fg: #1a1a2e; --muted: #6b7280; --accent: #00a67e; --accent2: #c2410c; --card: #f9fafb; --border: #e5e7eb; --code-bg: #f3f4f6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 0.8rem; color: var(--fg); }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; color: var(--accent); }
+    p { margin: 0.8rem 0; }
+    ul { margin-left: 1.5rem; }
+    li { margin: 0.4rem 0; }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    .nav { margin-bottom: 1rem; font-size: 0.9rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font-weight: 600; color: var(--fg); background: var(--card); }
+    .yes { color: var(--accent); font-weight: 600; }
+    .no { color: var(--muted); }
+    .highlight { background: var(--card); }
+  </style>
+</head>
+<body>
+
+<p class="nav"><a href="index.html">← HOL Guard Examples</a> | <a href="scanner-reference.html">Scanner Reference</a> | <a href="security-checklist.html">Security Checklist</a></p>
+
+<h1>AI Agent Security Scanners Compared</h1>
+<p class="tagline">HOL Guard vs OpenSSF Scorecard, Semgrep, and general-purpose security tools.</p>
+
+<p>Not all security scanners are built for AI agents. This comparison shows what each tool covers and where HOL Guard fits.</p>
+
+<h2>Feature Comparison</h2>
+<table>
+  <tr>
+    <th>Feature</th>
+    <th>HOL Guard</th>
+    <th>OpenSSF Scorecard</th>
+    <th>Semgrep</th>
+    <th>Bandit</th>
+  </tr>
+  <tr class="highlight">
+    <td>AI agent plugin manifest validation</td>
+    <td class="yes">✓ Built-in</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+  </tr>
+  <tr>
+    <td>MCP server security checks</td>
+    <td class="yes">✓ Built-in</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+  </tr>
+  <tr class="highlight">
+    <td>Hardcoded secrets detection</td>
+    <td class="yes">✓ Built-in</td>
+    <td class="no">✗</td>
+    <td class="yes">✓ Rules</td>
+    <td class="no">✗</td>
+  </tr>
+  <tr>
+    <td>Dangerous code patterns (eval, shell)</td>
+    <td class="yes">✓ Built-in</td>
+    <td class="no">✗</td>
+    <td class="yes">✓ Rules</td>
+    <td class="yes">✓ Some</td>
+  </tr>
+  <tr class="highlight">
+    <td>CI/CD security (pinned Actions, Dependabot)</td>
+    <td class="yes">✓ Built-in</td>
+    <td class="yes">✓ Built-in</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+  </tr>
+  <tr>
+    <td>Security policy enforcement</td>
+    <td class="yes">✓ Built-in</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+  </tr>
+  <tr class="highlight">
+    <td>License verification</td>
+    <td class="yes">✓ Built-in</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+  </tr>
+  <tr>
+    <td>General code quality</td>
+    <td class="yes">✓ Basic</td>
+    <td class="no">✗</td>
+    <td class="yes">✓ Extensive</td>
+    <td class="yes">✓ Some</td>
+  </tr>
+  <tr class="highlight">
+    <td>Custom rule support</td>
+    <td class="no">✗</td>
+    <td class="no">✗</td>
+    <td class="yes">✓ Extensive</td>
+    <td class="no">✗</td>
+  </tr>
+  <tr>
+    <td>GitHub Action</td>
+    <td class="yes">✓ Official</td>
+    <td class="yes">✓ Official</td>
+    <td class="yes">✓ Official</td>
+    <td class="no">✗</td>
+  </tr>
+</table>
+
+<h2>When to Use Each Tool</h2>
+
+<h3>HOL Guard</h3>
+<ul>
+  <li>Building or installing AI agent plugins (Claude Code, Codex, Cursor, etc.)</li>
+  <li>Need a comprehensive score (130-point system) with pass/fail criteria</li>
+  <li>Want MCP-specific security checks</li>
+  <li>Need CI gate that blocks on security findings</li>
+</ul>
+
+<h3>OpenSSF Scorecard</h3>
+<ul>
+  <li>General open-source project health assessment</li>
+  <li>Checking for signed releases, code review practices, dependency update tools</li>
+  <li>Not AI-specific, but valuable for any dependency</li>
+</ul>
+
+<h3>Semgrep</h3>
+<ul>
+  <li>Deep static analysis with custom rules</li>
+  <li>Enterprise environments with specific security policies</li>
+  <li>Complement to HOL Guard for additional code-level checks</li>
+</ul>
+
+<h3>Bandit</h3>
+<ul>
+  <li>Python-specific security linting</li>
+  <li>Catching common Python security issues (SQL injection, hardcoded passwords, etc.)</li>
+  <li>Good for Python-based AI agent plugins</li>
+</ul>
+
+<h2>Recommended Stack</h2>
+<p>For AI agent plugin security, use:</p>
+<ol>
+  <li><strong>HOL Guard</strong> — primary scanner for plugin-specific checks</li>
+  <li><strong>Semgrep</strong> — secondary for deep code analysis and custom rules</li>
+  <li><strong>OpenSSF Scorecard</strong> — for overall project health of dependencies</li>
+</ol>
+
+<h2>Resources</h2>
+<ul>
+  <li><a href="how-to-scan.html">How to Scan — step-by-step guide</a></li>
+  <li><a href="scanner-reference.html">Scanner Reference — 7-category scoring</a></li>
+  <li><a href="security-checklist.html">Security Checklist</a></li>
+  <li><a href="https://github.com/zerocodefast/hol-guard-template">Secure Template Repo</a></li>
+</ul>
+
+<div class="footer">
+  <p>HOL Guard is open source under Apache 2.0. <a href="index.html">← Back to HOL Guard Examples</a></p>
+</div>
+
+</body>
+</html>
