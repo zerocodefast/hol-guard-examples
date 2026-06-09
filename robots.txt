@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zerocodefast.github.io/hol-guard-examples/sitemap.xml

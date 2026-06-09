@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOL Plugin Scanner Reference — 7-Category Security Score</title>
+  <meta name="description" content="Complete reference for the HOL Plugin Scanner. 7-category scoring system, 130 points total, with examples of what each check looks for.">
+  <meta property="og:title" content="HOL Plugin Scanner Reference — 7-Category Security Score">
+  <meta property="og:description" content="Complete reference for the HOL Plugin Scanner. 7-category scoring system, 130 points total.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerocodefast.github.io/hol-guard-examples/scanner-reference.html">
+  <link rel="canonical" href="https://zerocodefast.github.io/hol-guard-examples/scanner-reference.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HOL Plugin Scanner Reference",
+    "description": "Complete reference for the HOL Plugin Scanner scoring system",
+    "author": {"@type": "Organization", "name": "Hashgraph Online"},
+    "publisher": {"@type": "Organization", "name": "HOL Guard"}
+  }
+  </script>
+  <style>
+    :root { --bg: #ffffff; --fg: #1a1a2e; --muted: #6b7280; --accent: #00a67e; --accent2: #c2410c; --card: #f9fafb; --border: #e5e7eb; --code-bg: #f3f4f6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 0.8rem; color: var(--fg); }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; color: var(--accent2); }
+    p { margin: 0.8rem 0; }
+    ul { margin-left: 1.5rem; }
+    li { margin: 0.4rem 0; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); font-family: monospace; font-size: 0.85rem; }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    .nav { margin-bottom: 1rem; font-size: 0.9rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th, td { padding: 0.6rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { font-weight: 600; color: var(--fg); }
+    .score { font-weight: 700; color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<p class="nav"><a href="index.html">← HOL Guard Examples</a> | <a href="claude-code-security.html">Claude Code Security</a> | <a href="mcp-server-security.html">MCP Server Security</a></p>
+
+<h1>HOL Plugin Scanner Reference</h1>
+<p class="tagline">Complete scoring system: 7 categories, 130 points total.</p>
+
+<p>The HOL Plugin Scanner evaluates plugins across 7 categories. Each category has a maximum score. A plugin needs <strong>80+ points</strong> with no critical or high severity findings to pass.</p>
+
+<h2>Score Breakdown</h2>
+<table>
+  <tr><th>Category</th><th>Max</th><th>What It Checks</th></tr>
+  <tr><td>Manifest Validation</td><td class="score">31</td><td>Valid plugin.json, required fields, semver, kebab-case ID</td></tr>
+  <tr><td>Security</td><td class="score">36</td><td>SECURITY.md, LICENSE, no secrets, hardened MCP remotes</td></tr>
+  <tr><td>Operational Security</td><td class="score">20</td><td>Pinned Actions, no write-all, Dependabot, lockfiles</td></tr>
+  <tr><td>Best Practices</td><td class="score">15</td><td>README.md, skills directory, SKILL.md frontmatter, .codexignore</td></tr>
+  <tr><td>Marketplace</td><td class="score">15</td><td>marketplace.json valid, safe source paths</td></tr>
+  <tr><td>Skill Security</td><td class="score">15</td><td>Cisco scan clean, no elevated findings, analyzable</td></tr>
+  <tr><td>Code Quality</td><td class="score">10</td><td>No eval/new Function, no shell injection</td></tr>
+</table>
+
+<p><strong>Total: 130 points</strong> | <strong>Passing: 80+</strong> | <strong>Must have: no critical or high findings</strong></p>
+
+<h2>Manifest Validation (31 points)</h2>
+<div class="card">
+  <h3>What It Checks</h3>
+  <ul>
+    <li>plugin.json is valid JSON</li>
+    <li>All required fields present (id, name, version, description, author)</li>
+    <li>Version follows semver</li>
+    <li>ID uses kebab-case</li>
+    <li>Repository URL is valid</li>
+  </ul>
+</div>
+
+<h2>Security (36 points)</h2>
+<div class="card">
+  <h3>What It Checks</h3>
+  <ul>
+    <li>SECURITY.md exists with supported versions and reporting policy</li>
+    <li>LICENSE exists (Apache 2.0, MIT, etc.)</li>
+    <li>No hardcoded secrets (API keys, tokens, passwords)</li>
+    <li>No private keys in repo</li>
+    <li>MCP remotes are hardened (no http, validated)</li>
+  </ul>
+</div>
+
+<h2>Operational Security (20 points)</h2>
+<div class="card">
+  <h3>What It Checks</h3>
+  <ul>
+    <li>GitHub Actions are pinned to commit hashes</li>
+    <li>No overly permissive permissions (e.g., write-all)</li>
+    <li>Dependabot is configured</li>
+    <li>Package lockfiles exist</li>
+  </ul>
+</div>
+
+<h2>Best Practices (15 points)</h2>
+<div class="card">
+  <h3>What It Checks</h3>
+  <ul>
+    <li>README.md exists with clear description</li>
+    <li>skills/ directory exists</li>
+    <li>SKILL.md has proper frontmatter</li>
+    <li>.codexignore file exists</li>
+  </ul>
+</div>
+
+<h2>Marketplace (15 points)</h2>
+<div class="card">
+  <h3>What It Checks</h3>
+  <ul>
+    <li>marketplace.json is valid</li>
+    <li>Source paths are safe (no .., no absolute paths)</li>
+    <li>Dependencies are reasonable</li>
+  </ul>
+</div>
+
+<h2>Skill Security (15 points)</h2>
+<div class="card">
+  <h3>What It Checks</h3>
+  <ul>
+    <li>Cisco scan is clean</li>
+    <li>No elevated findings</li>
+    <li>Skill code is analyzable (not obfuscated)</li>
+  </ul>
+</div>
+
+<h2>Code Quality (10 points)</h2>
+<div class="card">
+  <h3>What It Checks</h3>
+  <ul>
+    <li>No eval() or new Function() calls</li>
+    <li>No shell injection vulnerabilities</li>
+    <li>No dangerous child_process usage</li>
+  </ul>
+</div>
+
+<h2>Running the Scanner</h2>
+<pre>plugin-scanner scan /path/to/plugin --format text
+plugin-scanner scan /path/to/plugin --format json --output report.json
+plugin-scanner scan /path/to/plugin --format sarif --output results.sarif
+plugin-scanner lint /path/to/plugin --format text
+plugin-scanner verify /path/to/plugin --format text</pre>
+
+<h2>Resources</h2>
+<ul>
+  <li><a href="index.html">HOL Guard Examples</a></li>
+  <li><a href="https://github.com/hashgraph-online/hol-guard">HOL Guard</a></li>
+  <li><a href="https://pypi.org/project/plugin-scanner/">plugin-scanner</a></li>
+  <li><a href="https://github.com/hashgraph-online/ai-plugin-scanner-action">GitHub Action</a></li>
+</ul>
+
+<div class="footer">
+  <p>HOL Guard is open source under Apache 2.0. <a href="index.html">← Back to HOL Guard Examples</a></p>
+</div>
+
+</body>
+</html>

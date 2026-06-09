@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent Security Threats 2026 — What Every Developer Should Know</title>
+  <meta name="description" content="Real AI agent security threats in 2026: plugin supply chain attacks, hardcoded secrets, MCP server exploits, and how HOL Guard protects against them.">
+  <meta property="og:title" content="AI Agent Security Threats 2026 — What Every Developer Should Know">
+  <meta property="og:description" content="Real AI agent security threats in 2026: plugin supply chain attacks, hardcoded secrets, MCP server exploits, and how HOL Guard protects against them.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerocodefast.github.io/hol-guard-examples/ai-agent-threats.html">
+  <link rel="canonical" href="https://zerocodefast.github.io/hol-guard-examples/ai-agent-threats.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AI Agent Security Threats 2026",
+    "description": "Real AI agent security threats and protection strategies",
+    "author": {"@type": "Organization", "name": "Hashgraph Online"},
+    "publisher": {"@type": "Organization", "name": "HOL Guard"}
+  }
+  </script>
+  <style>
+    :root { --bg: #ffffff; --fg: #1a1a2e; --muted: #6b7280; --accent: #00a67e; --accent2: #c2410c; --card: #f9fafb; --border: #e5e7eb; --code-bg: #f3f4f6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 0.8rem; color: var(--fg); }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; color: var(--accent2); }
+    p { margin: 0.8rem 0; }
+    ul { margin-left: 1.5rem; }
+    li { margin: 0.4rem 0; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); font-family: monospace; font-size: 0.9rem; }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    .nav { margin-bottom: 1rem; font-size: 0.9rem; }
+    .threat { border-left: 4px solid var(--accent2); padding-left: 1rem; }
+    .mitigation { border-left: 4px solid var(--accent); padding-left: 1rem; }
+  </style>
+</head>
+<body>
+
+<p class="nav"><a href="index.html">← HOL Guard Examples</a> | <a href="claude-code-security.html">Claude Code Security</a> | <a href="mcp-server-security.html">MCP Server Security</a></p>
+
+<h1>AI Agent Security Threats 2026</h1>
+<p class="tagline">Real threats targeting AI coding agents and how to defend against them.</p>
+
+<p>AI coding agents have full access to your codebase, environment, and shell. This makes them a high-value target for attackers. Here are the threats you need to know about.</p>
+
+<h2>Threat 1: Malicious Plugin Supply Chain</h2>
+<div class="threat">
+  <p>Attackers publish plugins that look legitimate but contain backdoors. Because AI agents install and execute plugins automatically, the malicious code runs before anyone reviews it.</p>
+</div>
+<div class="mitigation">
+  <p><strong>Defense:</strong> Scan every plugin before installation with <code>plugin-scanner scan . --format text</code>. HOL Guard checks for hardcoded secrets, dangerous commands, and insecure configurations.</p>
+</div>
+
+<h2>Threat 2: Hardcoded Secrets in Plugins</h2>
+<div class="threat">
+  <p>Plugins that contain hardcoded API keys, database passwords, or tokens. Even if the plugin itself is not malicious, these secrets leak into your codebase and can be exfiltrated.</p>
+</div>
+<div class="mitigation">
+  <p><strong>Defense:</strong> HOL Guard's Security category (36 points) checks for secrets, evaluates the presence of a SECURITY.md, and verifies the LICENSE.</p>
+</div>
+
+<h2>Threat 3: Dangerous MCP Server Commands</h2>
+<div class="threat">
+  <p>MCP servers can execute arbitrary commands via <code>child_process</code>, <code>eval()</code>, or shell execution. A compromised MCP server can delete files, install malware, or exfiltrate data.</p>
+</div>
+<div class="mitigation">
+  <p><strong>Defense:</strong> HOL Guard scans for dangerous patterns like <code>rm -rf</code>, <code>sudo</code>, <code>curl | sh</code>, and <code>eval()</code> in plugin code. The Code Quality category (10 points) catches these.</p>
+</div>
+
+<h2>Threat 4: Unpinned CI Dependencies</h2>
+<div class="threat">
+  <p>Plugins that use GitHub Actions without pinned commit hashes are vulnerable to supply chain attacks. If the upstream action is compromised, your plugin build is compromised.</p>
+</div>
+<div class="mitigation">
+  <p><strong>Defense:</strong> HOL Guard's Operational Security category (20 points) checks for pinned Actions, Dependabot configuration, and lockfiles.</p>
+</div>
+
+<h2>Threat 5: Missing Security Policy</h2>
+<div class="threat">
+  <p>Plugins without a SECURITY.md or license create legal and operational risks. If a vulnerability is found, there is no clear process for reporting or fixing it.</p>
+</div>
+<div class="mitigation">
+  <p><strong>Defense:</strong> HOL Guard requires SECURITY.md and LICENSE for full points. The HOL Guard template repo includes these files by default.</p>
+</div>
+
+<h2>Getting Protected</h2>
+
+<pre>pipx install plugin-scanner
+plugin-scanner scan /path/to/your-plugin --format text</pre>
+
+<p>Or add CI to your plugin repo:</p>
+<pre>uses: hashgraph-online/ai-plugin-scanner-action@v1</pre>
+
+<h2>Resources</h2>
+<ul>
+  <li><a href="index.html">HOL Guard Examples</a></li>
+  <li><a href="https://github.com/hashgraph-online/hol-guard">HOL Guard</a></li>
+  <li><a href="https://pypi.org/project/plugin-scanner/">plugin-scanner</a></li>
+  <li><a href="https://hol.org/guard">hol.org/guard</a></li>
+</ul>
+
+<div class="footer">
+  <p>HOL Guard is open source under Apache 2.0. <a href="index.html">← Back to HOL Guard Examples</a></p>
+</div>
+
+</body>
+</html>

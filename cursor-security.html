@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor IDE Security — Protect Your AI Coding Agent</title>
+  <meta name="description" content="Security guide for Cursor IDE plugins. Scan and secure AI agent extensions from malicious code, secrets, and supply chain attacks using HOL Guard.">
+  <meta property="og:title" content="Cursor IDE Security — Protect Your AI Coding Agent">
+  <meta property="og:description" content="Security guide for Cursor IDE plugins. Scan and secure AI agent extensions from malicious code, secrets, and supply chain attacks using HOL Guard.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerocodefast.github.io/hol-guard-examples/cursor-security.html">
+  <link rel="canonical" href="https://zerocodefast.github.io/hol-guard-examples/cursor-security.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Cursor IDE Security",
+    "description": "Security guide for Cursor IDE users",
+    "author": {"@type": "Organization", "name": "Hashgraph Online"},
+    "publisher": {"@type": "Organization", "name": "HOL Guard"}
+  }
+  </script>
+  <style>
+    :root { --bg: #ffffff; --fg: #1a1a2e; --muted: #6b7280; --accent: #00a67e; --accent2: #c2410c; --card: #f9fafb; --border: #e5e7eb; --code-bg: #f3f4f6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 0.8rem; color: var(--fg); }
+    p { margin: 0.8rem 0; }
+    ul { margin-left: 1.5rem; }
+    li { margin: 0.4rem 0; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); font-family: monospace; font-size: 0.9rem; }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    .nav { margin-bottom: 1rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<p class="nav"><a href="index.html">← HOL Guard Examples</a> | <a href="claude-code-security.html">Claude Code Security</a> | <a href="mcp-server-security.html">MCP Server Security</a> | <a href="codex-security.html">Codex Security</a></p>
+
+<h1>Cursor IDE Security</h1>
+<p class="tagline">Secure Cursor IDE plugins and AI agent extensions from malicious code.</p>
+
+<p>Cursor is a VS Code fork with built-in AI coding capabilities. It supports extensions and plugins that can access your codebase, terminal, and environment. These extensions run with the same privileges as the IDE itself.</p>
+
+<h2>Why Cursor Needs Security Scanning</h2>
+<ul>
+  <li>Extensions run in the same process as the IDE</li>
+  <li>AI agent features can execute code on your behalf</li>
+  <li>Third-party extensions are installed from the marketplace without review</li>
+  <li>Extensions can read sensitive files and environment variables</li>
+</ul>
+
+<h2>Scanning Cursor Extensions with HOL Guard</h2>
+<pre>plugin-scanner scan /path/to/cursor-extension --format text</pre>
+
+<p>Or check a marketplace extension before installing:</p>
+<pre>plugin-scanner scan . --format json --output report.json</pre>
+
+<h2>Resources</h2>
+<ul>
+  <li><a href="index.html">HOL Guard Examples</a></li>
+  <li><a href="https://github.com/hashgraph-online/hol-guard">HOL Guard</a></li>
+  <li><a href="https://pypi.org/project/plugin-scanner/">plugin-scanner</a></li>
+  <li><a href="https://hol.org/guard">hol.org/guard</a></li>
+</ul>
+
+<div class="footer">
+  <p>HOL Guard is open source under Apache 2.0. <a href="index.html">← Back to HOL Guard Examples</a></p>
+</div>
+
+</body>
+</html>

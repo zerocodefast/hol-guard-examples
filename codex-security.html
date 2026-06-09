@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenAI Codex Security — Protect Your AI Coding Agent</title>
+  <meta name="description" content="Security guide for OpenAI Codex. Scan plugins, secure MCP servers, and prevent supply chain attacks with HOL Guard.">
+  <meta property="og:title" content="OpenAI Codex Security — Protect Your AI Coding Agent">
+  <meta property="og:description" content="Security guide for OpenAI Codex. Scan plugins, secure MCP servers, and prevent supply chain attacks with HOL Guard.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerocodefast.github.io/hol-guard-examples/codex-security.html">
+  <link rel="canonical" href="https://zerocodefast.github.io/hol-guard-examples/codex-security.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "OpenAI Codex Security",
+    "description": "Security guide for OpenAI Codex users",
+    "author": {"@type": "Organization", "name": "Hashgraph Online"},
+    "publisher": {"@type": "Organization", "name": "HOL Guard"}
+  }
+  </script>
+  <style>
+    :root { --bg: #ffffff; --fg: #1a1a2e; --muted: #6b7280; --accent: #00a67e; --accent2: #c2410c; --card: #f9fafb; --border: #e5e7eb; --code-bg: #f3f4f6; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 2rem 0 0.8rem; color: var(--fg); }
+    p { margin: 0.8rem 0; }
+    ul { margin-left: 1.5rem; }
+    li { margin: 0.4rem 0; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); font-family: monospace; font-size: 0.9rem; }
+    .tagline { color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+    .nav { margin-bottom: 1rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<p class="nav"><a href="index.html">← HOL Guard Examples</a> | <a href="claude-code-security.html">Claude Code Security</a> | <a href="mcp-server-security.html">MCP Server Security</a> | <a href="cursor-security.html">Cursor Security</a></p>
+
+<h1>OpenAI Codex Security</h1>
+<p class="tagline">Secure OpenAI Codex from malicious plugins and supply chain attacks.</p>
+
+<p>OpenAI Codex is a coding agent that operates directly on your codebase. It can execute shell commands, read files, and install plugins via <a href="https://modelcontextprotocol.io/">MCP servers</a>. This level of access makes it a high-value target for supply chain attacks.</p>
+
+<h2>Why Codex Needs Security Scanning</h2>
+<ul>
+  <li>Plugins run with the same permissions as the Codex process</li>
+  <li>MCP servers can execute arbitrary code on your machine</li>
+  <li>Custom skills can read environment variables and secrets</li>
+  <li>Third-party plugins are often installed without review</li>
+</ul>
+
+<h2>Scanning Codex Plugins with HOL Guard</h2>
+<pre>plugin-scanner scan ~/.codex/plugins --format text</pre>
+
+<p>Or scan a specific plugin before installing:</p>
+<pre>plugin-scanner scan /path/to/plugin --format json</pre>
+
+<h2>Protection Levels for Codex</h2>
+<div class="card">
+  <h2>Gentle</h2>
+  <p>Minimal checks for rapid development. Good for trusted, internal plugins.</p>
+</div>
+<div class="card">
+  <h2>Balanced (Default)</h2>
+  <p>Standard security checks. Recommended for most Codex users.</p>
+</div>
+<div class="card">
+  <h2>Strict</h2>
+  <p>No high-severity findings allowed. Use for public or shared plugins.</p>
+</div>
+<div class="card">
+  <h2>Paranoid</h2>
+  <p>Every finding is a blocker. Use for enterprise or sensitive codebases.</p>
+</div>
+
+<h2>Resources</h2>
+<ul>
+  <li><a href="index.html">HOL Guard Examples</a></li>
+  <li><a href="https://github.com/hashgraph-online/hol-guard">HOL Guard</a></li>
+  <li><a href="https://pypi.org/project/plugin-scanner/">plugin-scanner</a></li>
+  <li><a href="https://hol.org/guard">hol.org/guard</a></li>
+</ul>
+
+<div class="footer">
+  <p>HOL Guard is open source under Apache 2.0. <a href="index.html">← Back to HOL Guard Examples</a></p>
+</div>
+
+</body>
+</html>
